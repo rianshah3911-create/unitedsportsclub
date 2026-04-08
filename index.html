@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USC Premium Menu</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+    <img src="usc.png" alt="USC Logo" class="logo">
+    <h2 style="margin:0; font-style: italic; font-size: 1.2rem;">United Sports Club Premium Menu</h2>
+</div>
+
+<div class="search-container">
+    <input type="text" id="menuSearch" placeholder="Search for dishes..." oninput="filterMenu()">
+</div>
+
+<div id="nav-buttons"></div>
+
+<div id="menu-app"></div>
+
+<div id="cart-bar" onclick="toggleCart()">
+    <div style="display:flex; align-items:center; gap:10px;">
+        <i data-lucide="shopping-cart" style="width:20px"></i>
+        <span id="cart-count" style="font-weight:800">0</span> Items
+    </div>
+    <span id="cart-total" style="font-weight:800">KES 0</span>
+</div>
+
+<div id="cart-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Order Summary</h3>
+            <button class="close-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        
+        <div id="cart-items-list"></div>
+        
+        <div class="total-section">
+            <span>Total Amount</span>
+            <span id="modal-total">KES 0</span>
+        </div>
+
+        <div class="customer-details">
+            <input type="text" id="cust-name" placeholder="Your Name">
+            <input type="number" id="cust-people" placeholder="Pax">
+        </div>
+
+        <button class="whatsapp-btn" onclick="placeOrder()">Order via WhatsApp</button>
+        <button class="clear-cart-btn" onclick="clearCart()">Clear All Items</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
