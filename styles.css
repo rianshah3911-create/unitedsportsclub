@@ -110,15 +110,43 @@ body { background: var(--bg); margin: 0; padding-bottom: 100px; color: var(--tex
 }
 
 .food-card {
-    background: var(--white);
-    padding: 12px 18px;
-    border-radius: 12px;
+    display: flex;
+    justify-content: space-between; /* Pushes content to opposite ends */
+    align-items: center; /* Vertical centering */
+    padding: 12px 15px;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 10px; /* Space between name and price */
+    min-height: 60px; /* Keeps consistent height */
+}
+
+.food-info {
+    flex: 1; /* Takes up all available middle space */
+    min-width: 0; /* Critical for text truncation */
+    display: flex;
+    flex-direction: column;
+}
+
+.food-name {
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap; /* Prevents name from breaking into 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." if the name is too long */
+}
+
+.card-right {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid #f0f0f0;
-    margin-bottom: 8px;
-    animation: fadeInScale 0.4s ease forwards;
+    gap: 12px;
+    flex-shrink: 0; /* Prevents the price/button from squishing */
+    white-space: nowrap; /* Keeps KES 250 + on one line */
+}
+
+.price-display {
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
 }
 
 .food-name { font-weight: 600; font-size: 14px; color: var(--primary); }
