@@ -367,3 +367,173 @@ body { background: var(--bg); margin: 0; padding-bottom: 100px; color: var(--tex
     cursor: pointer;
     margin-top: 10px;
 }
+
+.customer-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin-left: 5px;
+}
+
+.modern-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px; /* Prevents iOS auto-zoom on focus */
+    background: white;
+    appearance: none; /* Removes default styling for cleaner look */
+}
+
+/* Specific fix for date/time icons on mobile */
+input[type="date"], input[type="time"] {
+    font-family: inherit;
+    min-height: 45px;
+}
+
+.order-items-container {
+    margin-top: 20px;
+    border-top: 2px dashed #eee;
+    padding-top: 15px;
+}
+
+.section-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.cart-item-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-qty {
+    background: var(--primary);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 8px;
+	
+}
+
+.cart-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.cart-price {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.note-input {
+    font-size: 13px !important;
+    padding: 8px !important;
+    background: #fffbe6 !important; /* Slight yellow to look like a sticky note */
+    border: 1px solid #ffe58f !important;
+}
+
+.modal-footer-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--secondary);
+    border-top: 2px solid #eee;
+}
+
+
+/* Ensure the modal doesn't exceed screen height */
+.modal-content {
+    max-height: 90vh; /* 90% of screen height */
+    display: flex;
+    flex-direction: column;
+    padding: 0; /* Remove padding to handle segments */
+    overflow: hidden;
+    width: 95%;
+    max-width: 500px;
+}
+
+.modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+/* The Magic Scroll Area */
+.modal-body-scroll {
+    flex: 1; /* Takes up all available space */
+    overflow-y: auto; /* Enables scrolling */
+    padding: 20px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iPhone */
+}
+
+/* The Sticky Footer */
+.modal-footer-fixed {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background: #fafafa;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+}
+
+.modal-footer-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Clear button smaller, Order bigger */
+    gap: 10px;
+}
+
+/* Grid for Inputs */
+.customer-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.full-width { grid-column: span 2; }

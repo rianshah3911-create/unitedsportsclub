@@ -267,22 +267,139 @@ function updateCartUI() {
 
 function updateComment(index, val) { cart[index].comment = val; }
 
+// ... (keep your menuData and init() function at the top as they were) ...
+
+function addToCart(btn) {
+    btn.style.transform = "scale(1.3)";
+    setTimeout(() => btn.style.transform = "scale(1)", 200);
+
+    const card = btn.closest('.food-card');
+    const name = card.querySelector('.food-name').innerText;
+    const price = parseInt(card.querySelector('.v').innerText);
+    const size = card.querySelector('.portion-btn.active')?.innerText || "";
+    
+    const existing = cart.find(i => i.name === name && i.size === size);
+    if(existing) { 
+        existing.qty++; 
+    } else { 
+        cart.push({ name, size, price, qty: 1, comment: "" }); 
+    }
+    updateCartUI();
+}
+
+function updateCartUI() {
+    const list = document.getElementById('cart-items-list');
+    const cartCount = document.getElementById('cart-count');
+    const cartTotal = document.getElementById('cart-total');
+    const modalTotal = document.getElementById('modal-total');
+    const bar = document.getElementById('cart-bar');
+
+    let total = 0;
+    list.innerHTML = "";
+    
+    if (cart.length === 0) {
+        list.innerHTML = `<div style="text-align:center; padding:40px; color:#888;">Your selection is empty</div>`;
+    }
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        list.innerHTML += `
+            <div class="cart-item-card" style="animation-delay: ${index * 0.05}s">
+                <div class="cart-item-top">
+                    <div class="cart-item-info">
+                        <span class="cart-qty">${item.qty}x</span>
+                        <span class="cart-name">${item.name} ${item.size ? `<small>(${item.size})</small>` : ''}</span>
+                    </div>
+                    <span class="cart-price">KES ${itemTotal}</span>
+                </div>
+                <div class="cart-item-bottom">
+                    <input class="modern-input note-input" 
+                           placeholder="Add instructions (e.g., No onions)..." 
+                           oninput="updateComment(${index}, this.value)" 
+                           value="${item.comment}">
+                </div>
+            </div>`;
+    });
+
+    // Update all count and total displays
+    if(cartCount) cartCount.innerText = cart.reduce((acc, obj) => acc + obj.qty, 0);
+    if(cartTotal) cartTotal.innerText = "KES " + total;
+    if(modalTotal) modalTotal.innerText = "KES " + total;
+    
+    // Show/Hide bottom floating bar
+    if(bar) bar.style.display = cart.length > 0 ? 'flex' : 'none';
+    
+    lucide.createIcons(); 
+}
+
+function updateComment(index, val) { 
+    cart[index].comment = val; 
+}
+
 function placeOrder() {
-    const name = document.getElementById('cust-name').value;
+    const nameInput = document.getElementById('cust-name');
+    const name = nameInput.value;
+    const date = document.getElementById('order-date').value;
+    const time = document.getElementById('order-time').value;
     const pax = document.getElementById('cust-people').value || "1";
+    const finalTotal = document.getElementById('modal-total').innerText;
+
     if(!name) {
-        document.getElementById('cust-name').style.border = "2px solid red";
-        return alert("Please enter your name!");
+        nameInput.style.border = "2px solid red";
+        nameInput.focus();
+        return alert("Please enter your name to proceed!");
     }
     
-    let msg = `*USC PREMIUM ORDER*%0a*Customer:* ${name}%0a*Pax:* ${pax}%0a%0a`;
+    // Formatting Date for readability
+    let formattedDate = "";
+    if(date) {
+        const d = date.split('-');
+        formattedDate = `${d[2]}/${d[1]}/${d[0]}`;
+    }
+
+    // Build the WhatsApp message
+    let msg = `*USC PREMIUM ORDER*%0a`;
+    msg += `--------------------------%0a`;
+    msg += `👤 *Customer:* ${name}%0a`;
+    msg += `👥 *Pax:* ${pax}%0a`;
+    
+    if(date) msg += `📅 *Date:* ${formattedDate}%0a`;
+    if(time) msg += `⏰ *Time:* ${time}%0a`;
+    
+    msg += `--------------------------%0a%0a`;
+    msg += `*ITEMS ORDERED:*%0a`;
+
     cart.forEach(item => {
         msg += `✅ ${item.qty}x ${item.name} ${item.size ? `(${item.size})` : ''}%0a`;
-        if(item.comment) msg += `    _Note: ${item.comment}_%0a`;
+        if(item.comment) msg += `   _Note: ${item.comment}_%0a`;
     });
-    msg += `%0a*Total: ${document.getElementById('modal-total').innerText}*`;
+
+    msg += `%0a💰 *Grand Total: ${finalTotal}*`;
+    
     window.open(`https://wa.me/254722850525?text=${msg}`);
 }
+
+function toggleCart() {
+    const m = document.getElementById('cart-modal');
+    // Ensure display is handled correctly for the fade-in CSS
+    if (m.style.display === 'flex') {
+        m.style.display = 'none';
+    } else {
+        m.style.display = 'flex';
+        updateCartUI(); // Refresh list when opening
+    }
+}
+
+function clearCart() { 
+    if(confirm("Are you sure you want to clear your entire order?")) {
+        cart = []; 
+        updateCartUI(); 
+        toggleCart(); 
+    }
+}
+
+// ... (keep toggleSub, openMainCategory, changePrice, filterMenu as they were) ...
 
 function toggleSub(id) { 
     const el = document.getElementById(id);
