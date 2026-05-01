@@ -524,12 +524,25 @@ function updateCartUI() {
     cart.forEach((item, index) => {
         const itemTotal = item.price * item.qty;
         total += itemTotal;
+
+        const allOpts = item.size ? item.size.split(', ') : [];
+        const sizeOpts = allOpts.filter(s => ['Half', 'Full', 'Qtr'].includes(s));
+        const styleOpts = allOpts.filter(s => !['Half', 'Full', 'Qtr'].includes(s));
+
+        const sizeTag = sizeOpts.length
+            ? `<span class="cart-size-tag">${sizeOpts.join('/')}</span>` : '';
+        const stylesLine = styleOpts.length
+            ? `<div class="cart-styles">${styleOpts.join(' · ')}</div>` : '';
+
         list.innerHTML += `
             <div class="cart-item-card" style="animation-delay: ${index * 0.05}s">
                 <div class="cart-item-top">
                     <div class="cart-item-info">
                         <span class="cart-qty">${item.qty}x</span>
-                        <span class="cart-name">${item.name} ${item.size ? `<small>(${item.size})</small>` : ''}</span>
+                        <div class="cart-item-details">
+                            <span class="cart-name">${item.name} ${sizeTag}</span>
+                            ${stylesLine}
+                        </div>
                     </div>
                     <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
                         <span class="cart-price">KES ${itemTotal}</span>
@@ -603,7 +616,13 @@ function placeOrder() {
     msg += `*ITEMS ORDERED:*%0a`;
 
     cart.forEach(item => {
-        msg += `✅ ${item.qty}x ${item.name} ${item.size ? `(${item.size})` : ''}%0a`;
+        const allOpts = item.size ? item.size.split(', ') : [];
+        const sizeOpts = allOpts.filter(s => ['Half', 'Full', 'Qtr'].includes(s));
+        const styleOpts = allOpts.filter(s => !['Half', 'Full', 'Qtr'].includes(s));
+        let line = `✅ ${item.qty}x ${item.name}`;
+        if (sizeOpts.length) line += ` (${sizeOpts.join('/')})`;
+        if (styleOpts.length) line += ` - ${styleOpts.join(', ')}`;
+        msg += line + `%0a`;
         if (item.comment) msg += `   _Note: ${item.comment}_%0a`;
     });
 
