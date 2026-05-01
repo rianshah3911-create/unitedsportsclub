@@ -273,7 +273,7 @@ const menuData = [
                 { n: "Chicken Mushroom & Chick Peas Pasta", p: 700 },
                 { n: "Penne Alfredo", p: 600 },
                 { n: "Shrimp Pasta", p: 700 },
-                { n: "Veg Pasta Red Sauce", p: 600 }
+                { n: "Veg Pasta", sizes: { "Red Sauce": 600, "White Sauce": 600, "Pink Sauce": 600 } }
             ]},
             { name: "PIZZA", items: [
                 { n: "Chicken Pizza", p: 800 },
