@@ -226,7 +226,7 @@ const menuData = [
             { name: "MUTTON", items: [
                 { n: "Mutton Khima Masala", sizes: { "Qtr": 750, "Half": 1300, "Full": 2200 } },
                 { n: "Mutton Khima Kofta", sizes: { "Qtr": 750, "Half": 1350, "Full": 2200 } },
-                { n: "Mutton", sizes: { "Half": 1300, "Full": 2200 }, styles: ["Palak", "Methi", "Jeera", "Masala"] },
+                { n: "Mutton", sizes: { "Half": 1300, "Full": 2200 }, styles: ["Mari", "Palak", "Methi", "Jeera", "Masala"] },
                 { n: "Mutton Karai", sizes: { "Half": 1300, "Full": 2200 } }
             ]},
             { name: "PRAWNS", items: [
