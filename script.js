@@ -337,6 +337,11 @@ function updateComment(index, val) {
     cart[index].comment = val; 
 }
 
+function setOrderType(btn) {
+    document.querySelectorAll('.order-type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+}
+
 function placeOrder() {
     const nameInput = document.getElementById('cust-name');
     const name = nameInput.value;
@@ -344,29 +349,31 @@ function placeOrder() {
     const time = document.getElementById('order-time').value;
     const pax = document.getElementById('cust-people').value || "1";
     const finalTotal = document.getElementById('modal-total').innerText;
+    const orderType = document.querySelector('.order-type-btn.active')?.innerText || "Dine In";
 
     if(!name) {
         nameInput.style.border = "2px solid red";
         nameInput.focus();
         return alert("Please enter your name to proceed!");
     }
-    
-    // Formatting Date for readability
+
     let formattedDate = "";
     if(date) {
         const d = date.split('-');
         formattedDate = `${d[2]}/${d[1]}/${d[0]}`;
     }
 
-    // Build the WhatsApp message
+    const orderTypeIcon = orderType === "Takeaway" ? "🥡" : "🍽";
+
     let msg = `*USC PREMIUM ORDER*%0a`;
     msg += `--------------------------%0a`;
     msg += `👤 *Customer:* ${name}%0a`;
     msg += `👥 *Pax:* ${pax}%0a`;
-    
+    msg += `${orderTypeIcon} *Order Type:* ${orderType}%0a`;
+
     if(date) msg += `📅 *Date:* ${formattedDate}%0a`;
     if(time) msg += `⏰ *Time:* ${time}%0a`;
-    
+
     msg += `--------------------------%0a%0a`;
     msg += `*ITEMS ORDERED:*%0a`;
 
@@ -376,7 +383,7 @@ function placeOrder() {
     });
 
     msg += `%0a💰 *Grand Total: ${finalTotal}*`;
-    
+
     window.open(`https://wa.me/254722850525?text=${msg}`);
 }
 

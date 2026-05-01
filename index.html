@@ -55,6 +55,13 @@
                     <label>No. of People (Pax)</label>
                     <input type="number" id="cust-people" value="1" class="modern-input">
                 </div>
+                <div class="input-group full-width">
+                    <label>Order Type</label>
+                    <div class="order-type-toggle">
+                        <button type="button" class="order-type-btn active" onclick="setOrderType(this)">Dine In</button>
+                        <button type="button" class="order-type-btn" onclick="setOrderType(this)">Takeaway</button>
+                    </div>
+                </div>
             </div>
 
             <div class="order-items-container">

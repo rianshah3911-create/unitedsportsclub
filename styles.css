@@ -537,3 +537,29 @@ input[type="date"], input[type="time"] {
 }
 
 .full-width { grid-column: span 2; }
+
+.order-type-toggle {
+    display: flex;
+    background: #f0f0f0;
+    border-radius: 10px;
+    padding: 4px;
+    gap: 4px;
+}
+
+.order-type-btn {
+    flex: 1;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    color: #888;
+}
+
+.order-type-btn.active {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
