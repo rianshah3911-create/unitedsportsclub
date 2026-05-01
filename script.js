@@ -19,11 +19,10 @@ const menuData = [
                 { n: "Spanish Omelette Sandwich (+Chips)", p: 400 }
             ]},
             { type: "VEG", name: "PANEER STARTERS", items: [
-                { n: "Paneer Chilly", p: 650 },
+                { n: "Paneer", sizes: { "Chilly": 650, "Pousin": 650 } },
                 { n: "Paneer Pokora", p: 650 },
-                { n: "Paneer Pousin", p: 650 },
                 { n: "Paneer Tikka", p: 500 },
-                { n: "Paneer Samosa (6 Pcs)", p: 240 }
+                { n: "Paneer Samosa (6 Pcs)", p: 300 }
             ]},
             { type: "VEG", name: "CHAPATIS", items: [
                 { n: "Vegetable Chapati (+Salad)", p: 300 },
@@ -31,6 +30,7 @@ const menuData = [
                 { n: "Egg Chapati Single (+Salad)", p: 250 },
                 { n: "Mutton Kheema Egg Chapati (+Salad)", p: 450 },
                 { n: "Cheese Chapati (+Salad)", p: 500 },
+                { n: "Cheese Corn Chapati (+Salad)", p: 550 },
                 { n: "Veg Cheese Chapati (+Salad)", p: 550 },
                 { n: "Paneer Chapati (+Salad)", p: 500 },
                 { n: "Chicken Khima Chapati (+Salad)", p: 550 }
@@ -49,6 +49,7 @@ const menuData = [
                 { n: "Periperi Chips", p: 300 },
                 { n: "Masala Chips", p: 300 },
                 { n: "Pepper Chips", p: 300 },
+                { n: "Pepper Dhania Chilly Chips", p: 300 },
                 { n: "Pousin Chips", p: 300 }
             ]},
             { type: "VEG", name: "POTATOES", items: [
@@ -62,7 +63,7 @@ const menuData = [
                 { n: "Plain Sima", p: 150 }
             ]},
             { type: "VEG", name: "DRINKS", items: [
-                { n: "Lassi Sweet/Salted", p: 180 },
+                { n: "Lassi", sizes: { "Sweet": 180, "Salted": 180 } },
                 { n: "Raitha", p: 250 },
                 { n: "Kadhi", p: 300 }
             ]},
@@ -77,7 +78,8 @@ const menuData = [
                 { n: "Boiled Jugu", p: 250 },
                 { n: "Veg Samosa (6 Pcs)", p: 300 },
                 { n: "Cassava Pousin", p: 400 },
-                { n: "Roasted/Fried Garlic", p: 100 },
+                { n: "Roasted Garlic", p: 100 },
+                { n: "Fried Garlic", p: 100 },
                 { n: "Puri (12 Pcs)", p: 360 },
                 { n: "Tepla (4 Pcs)", p: 280 }
             ]},
@@ -85,7 +87,8 @@ const menuData = [
                 { n: "Chicken Tender (Portion)", p: 850 },
                 { n: "Chicken Lollipop (8 Pcs)", p: 700 },
                 { n: "Chicken Wings (8 Pcs)", sizes: { "Plain": 600, "Pepper": 700, "Pousin": 700 } },
-                { n: "Chicken Sausages (3 Pcs)", sizes: { "Fried/Roasted": 400, "Pepper/Chilly/Pousin": 500 } },
+                { n: "Chicken Sausages (3 Pcs)", sizes: { "Fried": 400, "Roasted": 400 } },
+                { n: "Chicken Sausages Spicy (3 Pcs)", sizes: { "Pepper": 500, "Chilly": 500, "Pousin": 500 } },
                 { n: "Chicken Kebab (3 Pcs)", sizes: { "Normal": 600, "Special": 700 } },
                 { n: "Chicken Mishakiki (Min 4 Skewers)", p: 400 }
             ]},
@@ -106,7 +109,9 @@ const menuData = [
                 { n: "Fish Foil", p: 1400 },
                 { n: "Fish Tawa", p: 1450 },
                 { n: "Fish in Breadcrumb", p: 1400 },
-                { n: "Fish Grill/Tikka/Corrwalla", p: 1400 },
+                { n: "Fish Grill", p: 1400 },
+                { n: "Fish Tikka", p: 1400 },
+                { n: "Fish Corrwalla", p: 1400 },
                 { n: "Fish Pousin (+Salads & Chips)", p: 1450 }
             ]}
         ]
@@ -123,7 +128,7 @@ const menuData = [
                 { n: "Paneer Bhurji", p: 1300 }
             ]},
             { name: "EGG SPECIALTIES", items: [
-                { n: "Egg Curry/Mari Methi/Masala (3 Eggs)", p: 800 },
+                { n: "Egg (3 Eggs)", sizes: { "Curry": 800, "Mari Methi": 800, "Masala": 800 } },
                 { n: "Egg Bhurji (3 Eggs)", p: 800 }
             ]},
             { name: "CURRIES & DAALS", items: [
@@ -172,7 +177,9 @@ const menuData = [
         name: "NON-VEG MAINS", icon: "drumstick",
         sections: [
             { name: "CHICKEN (WITH BONES)", items: [
-                { n: "Chicken Mari Methi/Palak/Jeera", sizes: { "Half": 950, "Full": 1600 } },
+                { n: "Chicken Mari Methi", sizes: { "Half": 950, "Full": 1600 } },
+                { n: "Chicken Palak", sizes: { "Half": 950, "Full": 1600 } },
+                { n: "Chicken Jeera", sizes: { "Half": 950, "Full": 1600 } },
                 { n: "Chicken Chilly", sizes: { "Half": 950, "Full": 1600 } },
                 { n: "Chicken Malai Curry", sizes: { "Half": 950, "Full": 1600 } },
                 { n: "Chicken Dhania", sizes: { "Half": 950, "Full": 1600 } },
@@ -182,7 +189,8 @@ const menuData = [
                 { n: "Butter Chicken", sizes: { "Half": 1000, "Full": 1700 } },
                 { n: "Chicken Breadcrumb", sizes: { "Half": 950, "Full": 1600 } },
                 { n: "Chicken Wet Fry", sizes: { "Half": 950, "Full": 1600 } },
-                { n: "Chicken Tikka/Choma Kienyeji", sizes: { "Half": 950, "Full": 1600 } },
+                { n: "Chicken Tikka Kienyeji", sizes: { "Half": 950, "Full": 1600 } },
+                { n: "Chicken Choma Kienyeji", sizes: { "Half": 950, "Full": 1600 } },
                 { n: "Chicken Tikka Special", sizes: { "Half": 1000, "Full": 1700 } },
                 { n: "Chicken Kienyeji", sizes: { "Full": 1800 } },
                 { n: "Chicken Khima Kofta", sizes: { "Half": 1200, "Full": 2000 } },
@@ -191,7 +199,9 @@ const menuData = [
                 { n: "Chicken Pousin (+Chips/Salad)", sizes: { "Half": 1000, "Full": 1700 } }
             ]},
             { name: "CHICKEN (BONELESS)", items: [
-                { n: "Chicken Mari Methi/Palak/Jeera (Boneless)", p: 1000 },
+                { n: "Chicken Mari Methi (Boneless)", p: 1000 },
+                { n: "Chicken Palak (Boneless)", p: 1000 },
+                { n: "Chicken Jeera (Boneless)", p: 1000 },
                 { n: "Chicken Malai Tawa (Boneless)", p: 1000 },
                 { n: "Chicken Malai Curry (Boneless)", p: 1000 },
                 { n: "Chicken Paka (Boneless)", p: 1050 },
@@ -200,20 +210,27 @@ const menuData = [
                 { n: "Butter Chicken (Boneless)", p: 1050 },
                 { n: "Chicken Breadcrumb (Boneless)", p: 1000 },
                 { n: "Chicken Masala (Boneless)", p: 1000 },
-                { n: "Chicken Tikka/Choma Kienyeji (Boneless)", p: 1000 },
+                { n: "Chicken Tikka Kienyeji (Boneless)", p: 1000 },
+                { n: "Chicken Choma Kienyeji (Boneless)", p: 1000 },
                 { n: "Chicken Tikka Special (Boneless)", p: 1000 }
             ]},
             { name: "FISH (RED SNAPPER)", items: [
                 { n: "Fish Masala", p: 1400 },
                 { n: "Fish Paka", p: 1450 },
                 { n: "Fish Khima", p: 1400 },
-                { n: "Fish Mari/Methi/Palak/Jeera", p: 1400 },
+                { n: "Fish Mari", p: 1400 },
+                { n: "Fish Methi", p: 1400 },
+                { n: "Fish Palak", p: 1400 },
+                { n: "Fish Jeera", p: 1400 },
                 { n: "Fish Jawar Style", p: 1400 }
             ]},
             { name: "MUTTON", items: [
                 { n: "Mutton Khima Masala", sizes: { "Qtr": 750, "Half": 1300, "Full": 2200 } },
                 { n: "Mutton Khima Kofta", sizes: { "Qtr": 750, "Half": 1350, "Full": 2200 } },
-                { n: "Mutton Palak/Methi/Jeera/Masala", sizes: { "Half": 1300, "Full": 2200 } },
+                { n: "Mutton Palak", sizes: { "Half": 1300, "Full": 2200 } },
+                { n: "Mutton Methi", sizes: { "Half": 1300, "Full": 2200 } },
+                { n: "Mutton Jeera", sizes: { "Half": 1300, "Full": 2200 } },
+                { n: "Mutton Masala", sizes: { "Half": 1300, "Full": 2200 } },
                 { n: "Mutton Karai", sizes: { "Half": 1300, "Full": 2200 } }
             ]},
             { name: "PRAWNS", items: [
@@ -393,10 +410,7 @@ function filterMenu() {
     const allHeaders = document.querySelectorAll('.category-header');
 
     if (q.length === 0) {
-        // 1. Find the currently active tab button
         const activeBtn = document.querySelector('.nav-btn.active');
-        
-        // 2. SCRUB ALL INLINE STYLES from everything
         [allMainBlocks, allWrappers, allHeaders, allContents, allCards].forEach(list => {
             list.forEach(el => {
                 el.style.display = "";
@@ -407,18 +421,13 @@ function filterMenu() {
                 el.classList.remove('active');
             });
         });
-
-        // 3. FORCE RE-TRIGGER the current tab to restore original layout
-        if (activeBtn) {
-            activeBtn.click();
-        }
+        if (activeBtn) activeBtn.click();
         return;
     }
 
-    // --- SEARCH MODE (Remains the same) ---
     allMainBlocks.forEach(block => {
         block.style.display = 'block';
-        block.style.padding = "0 15px"; 
+        block.style.padding = "0 15px";
     });
 
     allWrappers.forEach(wrapper => {
@@ -439,13 +448,13 @@ function filterMenu() {
 
         if (matchInThisWrapper) {
             wrapper.style.display = 'block';
-            wrapper.style.margin = "0"; 
-            wrapper.style.boxShadow = "none"; 
+            wrapper.style.margin = "0";
+            wrapper.style.boxShadow = "none";
             wrapper.style.background = "transparent";
             if (content) {
                 content.classList.add('active');
                 content.style.display = "block";
-                content.style.padding = "0"; 
+                content.style.padding = "0";
             }
             if (header) header.style.display = 'none';
         } else {
@@ -462,67 +471,12 @@ function addToCart(btn) {
     const name = card.querySelector('.food-name').innerText;
     const price = parseInt(card.querySelector('.v').innerText);
     const size = card.querySelector('.portion-btn.active')?.innerText || "";
-    
+
     const existing = cart.find(i => i.name === name && i.size === size);
-    if(existing) { existing.qty++; } 
-    else { cart.push({ name, size, price, qty: 1, comment: "" }); }
-    updateCartUI();
-}
-
-function updateCartUI() {
-    const list = document.getElementById('cart-items-list');
-    let total = 0;
-    list.innerHTML = "";
-    
-    cart.forEach((item, index) => {
-        const itemTotal = item.price * item.qty;
-        total += itemTotal;
-        list.innerHTML += `
-            <div class="cart-item-card" style="animation-delay: ${index * 0.05}s">
-                <div class="cart-item-top">
-                    <div class="cart-item-info">
-                        <span class="cart-qty">${item.qty}x</span>
-                        <span class="cart-name">${item.name} ${item.size ? `<small>(${item.size})</small>` : ''}</span>
-                    </div>
-                    <span class="cart-price">KES ${itemTotal}</span>
-                </div>
-                <div class="cart-item-bottom">
-                    <i data-lucide="message-square" class="note-icon"></i>
-                    <input class="modern-input note-input" 
-                           placeholder="Add special instructions..." 
-                           oninput="updateComment(${index}, this.value)" 
-                           value="${item.comment}">
-                </div>
-            </div>`;
-    });
-
-    document.getElementById('cart-count').innerText = cart.reduce((acc, obj) => acc + obj.qty, 0);
-    document.getElementById('cart-total').innerText = "KES " + total;
-    document.getElementById('modal-total').innerText = "KES " + total;
-    
-    const bar = document.getElementById('cart-bar');
-    bar.style.display = cart.length > 0 ? 'flex' : 'none';
-    lucide.createIcons(); 
-}
-
-function updateComment(index, val) { cart[index].comment = val; }
-
-// ... (keep your menuData and init() function at the top as they were) ...
-
-function addToCart(btn) {
-    btn.style.transform = "scale(1.3)";
-    setTimeout(() => btn.style.transform = "scale(1)", 200);
-
-    const card = btn.closest('.food-card');
-    const name = card.querySelector('.food-name').innerText;
-    const price = parseInt(card.querySelector('.v').innerText);
-    const size = card.querySelector('.portion-btn.active')?.innerText || "";
-    
-    const existing = cart.find(i => i.name === name && i.size === size);
-    if(existing) { 
-        existing.qty++; 
-    } else { 
-        cart.push({ name, size, price, qty: 1, comment: "" }); 
+    if (existing) {
+        existing.qty++;
+    } else {
+        cart.push({ name, size, price, qty: 1, comment: "" });
     }
     updateCartUI();
 }
@@ -536,7 +490,7 @@ function updateCartUI() {
 
     let total = 0;
     list.innerHTML = "";
-    
+
     if (cart.length === 0) {
         list.innerHTML = `<div style="text-align:center; padding:40px; color:#888;">Your selection is empty</div>`;
     }
@@ -551,30 +505,35 @@ function updateCartUI() {
                         <span class="cart-qty">${item.qty}x</span>
                         <span class="cart-name">${item.name} ${item.size ? `<small>(${item.size})</small>` : ''}</span>
                     </div>
-                    <span class="cart-price">KES ${itemTotal}</span>
+                    <div style="display:flex; align-items:center; gap:8px; flex-shrink:0;">
+                        <span class="cart-price">KES ${itemTotal}</span>
+                        <button class="remove-item-btn" onclick="removeFromCart(${index})">×</button>
+                    </div>
                 </div>
                 <div class="cart-item-bottom">
-                    <input class="modern-input note-input" 
-                           placeholder="Add instructions (e.g., No onions)..." 
-                           oninput="updateComment(${index}, this.value)" 
+                    <input class="modern-input note-input"
+                           placeholder="Add instructions (e.g., No onions)..."
+                           oninput="updateComment(${index}, this.value)"
                            value="${item.comment}">
                 </div>
             </div>`;
     });
 
-    // Update all count and total displays
-    if(cartCount) cartCount.innerText = cart.reduce((acc, obj) => acc + obj.qty, 0);
-    if(cartTotal) cartTotal.innerText = "KES " + total;
-    if(modalTotal) modalTotal.innerText = "KES " + total;
-    
-    // Show/Hide bottom floating bar
-    if(bar) bar.style.display = cart.length > 0 ? 'flex' : 'none';
-    
-    lucide.createIcons(); 
+    if (cartCount) cartCount.innerText = cart.reduce((acc, obj) => acc + obj.qty, 0);
+    if (cartTotal) cartTotal.innerText = "KES " + total;
+    if (modalTotal) modalTotal.innerText = "KES " + total;
+    if (bar) bar.style.display = cart.length > 0 ? 'flex' : 'none';
+
+    lucide.createIcons();
 }
 
-function updateComment(index, val) { 
-    cart[index].comment = val; 
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function updateComment(index, val) {
+    cart[index].comment = val;
 }
 
 function setOrderType(btn) {
@@ -586,19 +545,20 @@ function placeOrder() {
     const nameInput = document.getElementById('cust-name');
     const name = nameInput.value;
     const date = document.getElementById('order-date').value;
-    const time = document.getElementById('order-time').value;
+    const arrivalTime = document.getElementById('order-time').value;
+    const orderTime = document.getElementById('order-time-now').value;
     const pax = document.getElementById('cust-people').value || "1";
     const finalTotal = document.getElementById('modal-total').innerText;
     const orderType = document.querySelector('.order-type-btn.active')?.innerText || "Dine In";
 
-    if(!name) {
+    if (!name) {
         nameInput.style.border = "2px solid red";
         nameInput.focus();
         return alert("Please enter your name to proceed!");
     }
 
     let formattedDate = "";
-    if(date) {
+    if (date) {
         const d = date.split('-');
         formattedDate = `${d[2]}/${d[1]}/${d[0]}`;
     }
@@ -610,16 +570,15 @@ function placeOrder() {
     msg += `👤 *Customer:* ${name}%0a`;
     msg += `👥 *Pax:* ${pax}%0a`;
     msg += `${orderTypeIcon} *Order Type:* ${orderType}%0a`;
-
-    if(date) msg += `📅 *Date:* ${formattedDate}%0a`;
-    if(time) msg += `⏰ *Time:* ${time}%0a`;
-
+    if (date) msg += `📅 *Date:* ${formattedDate}%0a`;
+    if (orderTime) msg += `🕐 *Order Time:* ${orderTime}%0a`;
+    if (arrivalTime) msg += `⏰ *Arrival Time:* ${arrivalTime}%0a`;
     msg += `--------------------------%0a%0a`;
     msg += `*ITEMS ORDERED:*%0a`;
 
     cart.forEach(item => {
         msg += `✅ ${item.qty}x ${item.name} ${item.size ? `(${item.size})` : ''}%0a`;
-        if(item.comment) msg += `   _Note: ${item.comment}_%0a`;
+        if (item.comment) msg += `   _Note: ${item.comment}_%0a`;
     });
 
     msg += `%0a💰 *Grand Total: ${finalTotal}*`;
@@ -629,29 +588,32 @@ function placeOrder() {
 
 function toggleCart() {
     const m = document.getElementById('cart-modal');
-    // Ensure display is handled correctly for the fade-in CSS
     if (m.style.display === 'flex') {
         m.style.display = 'none';
     } else {
         m.style.display = 'flex';
-        updateCartUI(); // Refresh list when opening
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const min = String(now.getMinutes()).padStart(2, '0');
+        const timeField = document.getElementById('order-time-now');
+        if (timeField && !timeField.value) timeField.value = `${h}:${min}`;
+        updateCartUI();
+        lucide.createIcons();
     }
 }
 
-function clearCart() { 
-    if(confirm("Are you sure you want to clear your entire order?")) {
-        cart = []; 
-        updateCartUI(); 
-        toggleCart(); 
+function clearCart() {
+    if (confirm("Clear your entire order?")) {
+        cart = [];
+        updateCartUI();
+        toggleCart();
     }
 }
 
-// ... (keep toggleSub, openMainCategory, changePrice, filterMenu as they were) ...
-
-function toggleSub(id) { 
+function toggleSub(id) {
     const el = document.getElementById(id);
-    el.classList.toggle('active'); 
-    if(el.classList.contains('active')) {
+    el.classList.toggle('active');
+    if (el.classList.contains('active')) {
         el.querySelectorAll('.food-card').forEach((card, i) => {
             card.style.animationDelay = `${i * 0.05}s`;
         });
@@ -662,7 +624,7 @@ function openMainCategory(id, btn) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('.main-category-block').forEach(c => c.style.display = 'none');
-    
+
     const target = document.getElementById(id);
     target.style.display = 'block';
     target.querySelectorAll('.category-wrapper').forEach((wrapper, i) => {
@@ -674,20 +636,6 @@ function changePrice(el, p) {
     el.parentElement.querySelectorAll('.portion-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
     el.closest('.food-card').querySelector('.v').innerText = p;
-}
-
-function toggleCart() {
-    const m = document.getElementById('cart-modal');
-    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
-    if(m.style.display === 'flex') lucide.createIcons();
-}
-
-function clearCart() { 
-    if(confirm("Clear your entire order?")) {
-        cart = []; 
-        updateCartUI(); 
-        toggleCart(); 
-    }
 }
 
 init();
