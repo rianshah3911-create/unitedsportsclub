@@ -183,9 +183,7 @@ const menuData = [
         name: "NON-VEG MAINS", icon: "drumstick",
         sections: [
             { name: "CHICKEN (WITH BONES)", items: [
-                { n: "Chicken Mari Methi", sizes: { "Half": 950, "Full": 1600 } },
-                { n: "Chicken Palak", sizes: { "Half": 950, "Full": 1600 } },
-                { n: "Chicken Jeera", sizes: { "Half": 950, "Full": 1600 } },
+                { n: "Chicken", sizes: { "Half": 950, "Full": 1600 }, styles: ["Mari", "Methi", "Palak", "Jeera"] },
                 { n: "Chicken Chilly", sizes: { "Half": 950, "Full": 1600 } },
                 { n: "Chicken Malai Curry", sizes: { "Half": 950, "Full": 1600 } },
                 { n: "Chicken Dhania", sizes: { "Half": 950, "Full": 1600 } },
@@ -205,9 +203,7 @@ const menuData = [
                 { n: "Chicken Pousin (+Chips/Salad)", sizes: { "Half": 1000, "Full": 1700 } }
             ]},
             { name: "CHICKEN (BONELESS)", items: [
-                { n: "Chicken Mari Methi (Boneless)", p: 1000 },
-                { n: "Chicken Palak (Boneless)", p: 1000 },
-                { n: "Chicken Jeera (Boneless)", p: 1000 },
+                { n: "Chicken (Boneless)", p: 1000, styles: ["Mari", "Methi", "Palak", "Jeera"] },
                 { n: "Chicken Malai Tawa (Boneless)", p: 1000 },
                 { n: "Chicken Malai Curry (Boneless)", p: 1000 },
                 { n: "Chicken Paka (Boneless)", p: 1050 },
