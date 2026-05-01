@@ -224,19 +224,13 @@ const menuData = [
                 { n: "Fish Masala", p: 1400 },
                 { n: "Fish Paka", p: 1450 },
                 { n: "Fish Khima", p: 1400 },
-                { n: "Fish Mari", p: 1400 },
-                { n: "Fish Methi", p: 1400 },
-                { n: "Fish Palak", p: 1400 },
-                { n: "Fish Jeera", p: 1400 },
+                { n: "Fish", sizes: { "Mari": 1400, "Methi": 1400, "Palak": 1400, "Jeera": 1400 } },
                 { n: "Fish Jawar Style", p: 1400 }
             ]},
             { name: "MUTTON", items: [
                 { n: "Mutton Khima Masala", sizes: { "Qtr": 750, "Half": 1300, "Full": 2200 } },
                 { n: "Mutton Khima Kofta", sizes: { "Qtr": 750, "Half": 1350, "Full": 2200 } },
-                { n: "Mutton Palak", sizes: { "Half": 1300, "Full": 2200 } },
-                { n: "Mutton Methi", sizes: { "Half": 1300, "Full": 2200 } },
-                { n: "Mutton Jeera", sizes: { "Half": 1300, "Full": 2200 } },
-                { n: "Mutton Masala", sizes: { "Half": 1300, "Full": 2200 } },
+                { n: "Mutton", sizes: { "Half": 1300, "Full": 2200 }, styles: ["Palak", "Methi", "Jeera", "Masala"] },
                 { n: "Mutton Karai", sizes: { "Half": 1300, "Full": 2200 } }
             ]},
             { name: "PRAWNS", items: [
@@ -393,12 +387,23 @@ function init() {
 
 function renderItem(item) {
     const hasSizes = !!item.sizes;
+    const hasStyles = !!item.styles;
+    const isHalfFull = hasSizes && Object.keys(item.sizes).some(k => k === 'Half' || k === 'Full');
     const price = hasSizes ? Object.values(item.sizes)[0] : item.p;
+
+    const sizesHTML = hasSizes ? `<div class="portion-box${isHalfFull ? ' single-select' : ''}">
+        ${Object.keys(item.sizes).map((s, i) => `<div class="portion-btn ${i===0?'active':''}" onclick="${isHalfFull ? `changePrice(this,${item.sizes[s]})` : `toggleMulti(this,${item.sizes[s]})`}">${s}</div>`).join('')}
+    </div>` : '';
+
+    const stylesHTML = hasStyles ? `<div class="portion-box">
+        ${item.styles.map((s, i) => `<div class="portion-btn ${i===0?'active':''}" onclick="toggleMulti(this,0)">${s}</div>`).join('')}
+    </div>` : '';
+
     return `
         <div class="food-card" data-name="${item.n.toLowerCase()}">
             <div class="food-info">
                 <span class="food-name">${item.n}</span>
-                ${hasSizes ? `<div class="portion-box">${Object.keys(item.sizes).map((s, i) => `<div class="portion-btn ${i===0?'active':''}" onclick="changePrice(this, ${item.sizes[s]})">${s}</div>`).join('')}</div>` : ''}
+                ${sizesHTML}${stylesHTML}
             </div>
             <div class="card-right">
                 <span class="price-display">KES <span class="v">${price}</span></span>
@@ -479,7 +484,7 @@ function addToCart(btn) {
     const card = btn.closest('.food-card');
     const name = card.querySelector('.food-name').innerText;
     const price = parseInt(card.querySelector('.v').innerText);
-    const size = card.querySelector('.portion-btn.active')?.innerText || "";
+    const size = [...card.querySelectorAll('.portion-btn.active')].map(b => b.innerText).join(', ');
 
     const existing = cart.find(i => i.name === name && i.size === size);
     if (existing) {
@@ -493,7 +498,7 @@ function addToCart(btn) {
 function removeOneFromCard(btn) {
     const card = btn.closest('.food-card');
     const name = card.querySelector('.food-name').innerText;
-    const size = card.querySelector('.portion-btn.active')?.innerText || "";
+    const size = [...card.querySelectorAll('.portion-btn.active')].map(b => b.innerText).join(', ');
 
     const idx = cart.findIndex(i => i.name === name && i.size === size);
     if (idx === -1) return;
@@ -661,6 +666,16 @@ function changePrice(el, p) {
     el.parentElement.querySelectorAll('.portion-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
     el.closest('.food-card').querySelector('.v').innerText = p;
+}
+
+function toggleMulti(el, p) {
+    el.classList.toggle('active');
+    if (!el.parentElement.querySelector('.portion-btn.active')) {
+        el.classList.add('active');
+    }
+    if (p > 0 && el.classList.contains('active')) {
+        el.closest('.food-card').querySelector('.v').innerText = p;
+    }
 }
 
 init();
