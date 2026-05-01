@@ -402,7 +402,10 @@ function renderItem(item) {
             </div>
             <div class="card-right">
                 <span class="price-display">KES <span class="v">${price}</span></span>
-                <button class="add-to-cart" onclick="addToCart(this)">+</button>
+                <div class="qty-controls">
+                    <button class="qty-btn minus-btn" onclick="removeOneFromCard(this)">−</button>
+                    <button class="qty-btn plus-btn" onclick="addToCart(this)">+</button>
+                </div>
             </div>
         </div>`;
 }
@@ -483,6 +486,22 @@ function addToCart(btn) {
         existing.qty++;
     } else {
         cart.push({ name, size, price, qty: 1, comment: "" });
+    }
+    updateCartUI();
+}
+
+function removeOneFromCard(btn) {
+    const card = btn.closest('.food-card');
+    const name = card.querySelector('.food-name').innerText;
+    const size = card.querySelector('.portion-btn.active')?.innerText || "";
+
+    const idx = cart.findIndex(i => i.name === name && i.size === size);
+    if (idx === -1) return;
+
+    if (cart[idx].qty > 1) {
+        cart[idx].qty--;
+    } else {
+        cart.splice(idx, 1);
     }
     updateCartUI();
 }
