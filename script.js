@@ -3,17 +3,19 @@ const menuData = [
         name: "STARTERS", icon: "zap",
         sections: [
             { type: "VEG", name: "BREAKFAST", items: [
-                { n: "Egg Plain/Boiled/Fried (Per Egg)", p: 80 },
+                { n: "Egg (Per Egg)", sizes: { "Plain": 80, "Boiled": 80, "Fried": 80 } },
                 { n: "Parota (4 Pcs)", p: 280 },
-                { n: "Tea Masala/Special Coffee", p: 100 },
-                { n: "Black Tea/Coffee", p: 100 },
+                { n: "Tea Masala", p: 100 },
+                { n: "Special Coffee", p: 100 },
+                { n: "Black Tea", p: 100 },
+                { n: "Coffee", p: 100 },
                 { n: "Glass Milk", p: 100 },
                 { n: "Toast (1 Slice)", p: 20 },
                 { n: "Mini Butter (10 Gms)", p: 100 },
                 { n: "Butter (250 Gms)", p: 700 }
             ]},
             { type: "VEG", name: "SANDWICHES", items: [
-                { n: "Cheese/Onion/Tomato Sandwich", p: 500 },
+                { n: "Sandwich", sizes: { "Cheese": 500, "Onion": 500, "Tomato": 500 } },
                 { n: "Boiled Egg Sandwich", p: 500 },
                 { n: "Plain Omelette", p: 350 },
                 { n: "Spanish Omelette Sandwich (+Chips)", p: 400 }
@@ -40,7 +42,8 @@ const menuData = [
                 { n: "Maru Bhajia", p: 250 },
                 { n: "Chilly Bhajia", p: 250 },
                 { n: "Onion Bhajia", p: 250 },
-                { n: "Methi/Gota Bhajia (8 Pcs)", p: 400 },
+                { n: "Methi Bhajia (8 Pcs)", p: 400 },
+                { n: "Gota Bhajia (8 Pcs)", p: 400 },
                 { n: "Egg Bhajia (3 Eggs)", p: 350 },
                 { n: "Mixed Bhajia", p: 500 }
             ]},
@@ -59,7 +62,8 @@ const menuData = [
             ]},
             { type: "VEG", name: "SIMA", items: [
                 { n: "Brown Sima (Atta)", p: 300 },
-                { n: "Jira/Butter Sima", p: 300 },
+                { n: "Jeera Sima", p: 300 },
+                { n: "Butter Sima", p: 300 },
                 { n: "Plain Sima", p: 150 }
             ]},
             { type: "VEG", name: "DRINKS", items: [
@@ -93,7 +97,8 @@ const menuData = [
                 { n: "Chicken Mishakiki (Min 4 Skewers)", p: 400 }
             ]},
             { type: "NON-VEG", name: "MUTTON", items: [
-                { n: "Mutton/Shish Kebab (3 Pcs)", p: 400 },
+                { n: "Mutton Kebab (3 Pcs)", p: 400 },
+                { n: "Shish Kebab (3 Pcs)", p: 400 },
                 { n: "Black Fried Kebab", p: 400 },
                 { n: "Mutton Samosa (6 Pcs)", p: 300 },
                 { n: "Mishakiki (4 Sticks Min)", p: 400 }
@@ -155,11 +160,12 @@ const menuData = [
                 { n: "Special Cauliflower Curry", p: 800 },
                 { n: "Mushroom Foil", p: 1200 },
                 { n: "Mushroom Masala", p: 1200 },
-                { n: "Kitchiri (with Potato Curry/Kadhi)", p: 2500 }
+                { n: "Kitchiri", sizes: { "Potato Curry": 2500, "Kadhi": 2500 } }
             ]},
             { name: "SALADS", items: [
                 { n: "Onion Extra", p: 50 },
-                { n: "Plain Salad/Long", p: 250 },
+                { n: "Plain Salad", p: 250 },
+                { n: "Long Salad", p: 250 },
                 { n: "Jeera Salad", p: 300 },
                 { n: "Kachumbari", p: 300 },
                 { n: "Gulab Salad", p: 400 }
@@ -572,7 +578,7 @@ function placeOrder() {
     msg += `${orderTypeIcon} *Order Type:* ${orderType}%0a`;
     if (date) msg += `📅 *Date:* ${formattedDate}%0a`;
     if (orderTime) msg += `🕐 *Order Time:* ${orderTime}%0a`;
-    if (arrivalTime) msg += `⏰ *Arrival Time:* ${arrivalTime}%0a`;
+    if (arrivalTime) msg += `⏰ *Serving Time:* ${arrivalTime}%0a`;
     msg += `--------------------------%0a%0a`;
     msg += `*ITEMS ORDERED:*%0a`;
 
